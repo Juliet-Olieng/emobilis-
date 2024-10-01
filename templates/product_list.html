@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Css/product_list.css' %}">
+    <title>Document</title>
+    <style>
+        /* Reset some default styles */
+        body, h1, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Overall styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #EC407A;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .main-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .main {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .main p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button a {
+            color: white;
+            text-decoration: none;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html'%}
+    <div>
+        <h1>product_list list</h1>
+        <div class="main-container">
+            {% for product in products %}
+            <div class="main">
+                <p>{{ product.image }}</p>
+                <p>{{ product.productname }}</p>
+                <p>{{ product.price}}</p>
+                <p>{{ product.description }}</p>
+                <p>{{ product.stock}}</p>
+                <button><a href="{% url 'customer_detail_view' id=customer.id %}">view details</a></button>
+                <button><a href="{% url 'add_customer_view' %}">add product</a></button>
+            </div>
+            {% endfor %} 
+        </div>
+    </div>
+</body>
+</html>

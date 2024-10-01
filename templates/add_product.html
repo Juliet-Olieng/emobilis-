@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'Css/product_upload.css' %}"/>
+    
+    <title>Document</title>
+</head>
+<body>
+    <h3>ADD PRODUCT FORM</h3>
+    <form method="POST",class="upload_form">
+        {%csrf_token%}
+        {{form.as_p}}
+        <button type="Submit">Save</button>
+    </form>
+</body>
+</html>
